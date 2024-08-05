@@ -23,6 +23,13 @@ app.get("/getUsers", (req, res) => {
     });
 });
 
+app.post("/createUser", async (req, res) => {
+  const user = req.body;
+  const newUser = new userModel(user);
+  await newUser.save();
+  res.json(user);
+});
+
 app.listen(5000, () => {
   console.log("server listen");
 });
